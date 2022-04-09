@@ -7,9 +7,12 @@ import { ICharacter } from '../../models/character.model';
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss']
 })
-export class BaseComponent implements OnInit{
+export class BaseComponent implements OnInit {
 
   public charactersMarvel: ICharacter[] = []
+  public showFormCharacter: boolean = false
+  public characterToEdit!: ICharacter 
+  public show: boolean = false
 
   constructor(private readonly _marvelService: MarvelService) { }
 
@@ -23,9 +26,20 @@ export class BaseComponent implements OnInit{
     })
   }
 
-  searchCharacter (key: string) {
+  searchCharacter(key: string) {
     this._marvelService.searchCharacter(key).subscribe((data) => {
       this.charactersMarvel = data
     })
+  }
+
+  deleteCharacter(character: ICharacter) {
+    console.log('del___', character)
+  }
+
+  editCharacter(character: ICharacter) {
+    console.log('edi___', character)
+    this.show = true
+    this.showFormCharacter = true
+    this.characterToEdit = character
   }
 }

@@ -1,5 +1,5 @@
 <div class="container-jsi flex-center-empty columns">
     <app-header class="container-jsi__sections" (searchCharacter)="searchCharacter($event)"></app-header>
-    <app-character-form class="container-jsi__sections" ></app-character-form>
-    <app-character-card class="container-jsi__sections" [characters]="charactersMarvel"></app-character-card>
+    <app-character-form *ngIf="show" class="container-jsi__sections" [characterToEdit]="characterToEdit"></app-character-form>
+    <app-character-card class="container-jsi__sections" [characters]="charactersMarvel" (delete)="deleteCharacter($event )" (edit)="editCharacter($event)"></app-character-card>
 </div>

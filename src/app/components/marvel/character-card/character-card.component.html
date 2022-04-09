@@ -1,6 +1,21 @@
-
 <div *ngFor="let character of characters">
-    <div>
-        {{character.title}}
+    <div class="container-character margin-t-1">
+        <div class="container-character__image">
+            <img [src]="character.image">
+        </div>
+        <div class="container-character__body">
+            <span class="container-character__body__title">
+                <h2>
+                    {{character.title}} 
+                </h2>
+            </span>
+            <span class="container-character__body__description">
+                {{character.body}} 
+            </span>
+        </div>
+        <div class="container-character__btns">
+            <button (click)="editCharacter(character)"><span class="material-icons">edit</span></button>
+            <button (click)="deleteCharacter(character)"><span class="material-icons">delete</span></button>
+        </div>
     </div>
 </div>

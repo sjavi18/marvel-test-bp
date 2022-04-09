@@ -8,7 +8,9 @@ import { ICharacter } from '../../../models/character.model';
 })
 export class CharacterFormComponent implements OnInit {
 
-  @Input() characters: ICharacter[] = []
+  @Input() characterToEdit!: ICharacter
+  @Input() show: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {

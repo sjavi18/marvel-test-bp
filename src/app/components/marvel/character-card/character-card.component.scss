@@ -1,0 +1,44 @@
+.container-character {
+    width: auto;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(-45deg, transparent 15px, #000 0) bottom left;
+    color: #fff;
+    &__image {
+        height: 90% !important;
+        width: 20% !important;
+        border: 1px solid red;
+        border-radius: 3px;
+        margin: 8px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__body {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        &__title{
+            padding: 10px 0 10px 0;
+        }
+        &__description {
+            width: 90%;
+        }
+    }
+    &__btns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 20%;
+        padding-right: 20px;
+        button {
+            background: #fff;
+            color:red;
+            margin-top: 8px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    }
+}

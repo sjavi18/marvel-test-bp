@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ICharacter } from 'src/app/models/character.model';
 
 @Component({
@@ -9,9 +9,19 @@ import { ICharacter } from 'src/app/models/character.model';
 export class CharacterCardComponent implements OnInit {
 
   @Input() characters: ICharacter[] = []
+  @Output() edit = new EventEmitter<ICharacter>()
+  @Output() delete = new EventEmitter<ICharacter>()
   constructor() { }
 
   ngOnInit(): void {
-    
+
+  }
+
+  editCharacter(character: ICharacter) {
+    this.edit.emit(character)
+  }
+
+  deleteCharacter(character: ICharacter) {
+    this.delete.emit(character)
   }
 }
