@@ -39,7 +39,7 @@ export class MarvelService {
       );
     }
   
-    deleteCharacter(id: string): Observable<any> {
+    deleteCharacter(id: string | undefined): Observable<any> {
       return this._http.delete<any>(`${url}/${id}?idAuthor=${this.authorId}`);
     }
 }

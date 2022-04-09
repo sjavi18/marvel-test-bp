@@ -33,7 +33,10 @@ export class BaseComponent implements OnInit {
   }
 
   deleteCharacter(character: ICharacter) {
-    console.log('del___', character)
+    this._marvelService.deleteCharacter(character._id).subscribe((response) => {
+      this.getAllCharacters();
+      alert(response.message);
+    })
   }
 
   editCharacter(character: ICharacter) {
