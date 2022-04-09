@@ -1,1 +1,8 @@
-<p>header works!</p>
+<div class="container-jsi__sections__header flex-between">
+    <div class="flex-start">
+        <h1>Listado de personajes</h1>
+        <input #in (keyup)="search(in.value)" (change)="search(in.value)" type="text" class="input"
+            placeholder="Buscar">
+    </div>
+    
+</div>

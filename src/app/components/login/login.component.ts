@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
         
         if (data.success) {
           this._cookieService.set('token', data.data.jwt)
+          this._cookieService.set('author_id', data.data.authorid)
           alert("Bienvenido")
           this._router.navigate(["/home"]);
         }

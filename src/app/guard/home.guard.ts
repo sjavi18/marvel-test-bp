@@ -23,8 +23,9 @@ export class HomeGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       const tokenCookie = this._cookieService.check('token')
+      const autCookie = this._cookieService.check('author_id')
       
-      if(!tokenCookie) {
+      if(!tokenCookie || !autCookie) {
         this._router.navigate(['/', 'login'])
       } 
       return tokenCookie
