@@ -8,20 +8,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  */
 import { AppComponent } from './app.component';
 import { BaseComponent } from './components/base/base.component';
+import { HeaderComponent } from './components/marvel/header/header.component';
+import { CharacterCardComponent } from './components/marvel/character-card/character-card.component';
+import { CharacterFormComponent } from './components/marvel/character-form/character-form.component';
+import { LoginComponent } from './components/login/login.component';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaseComponent
+    BaseComponent,
+    HeaderComponent,
+    CharacterCardComponent,
+    CharacterFormComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
     ExternalAssetsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   exports: [AppComponent, BaseComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

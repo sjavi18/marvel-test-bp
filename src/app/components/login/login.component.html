@@ -1,0 +1,24 @@
+<div class="container-login flex-center">
+    <div class="container-login__card-login flex-center columns">
+        <h1>
+            {{getTitle()}}
+        </h1>
+        <form [formGroup]="formLogin" (submit)="send()">
+            <div>
+                <input type="text" id="email" formControlName="email" placeholder="Email">
+            </div>
+            <div>
+                <input type="password" id="password" formControlName="password" placeholder="Password">
+            </div>
+            <div *ngIf="hasSignUp">
+                <input type="number" id="authorid" formControlName="authorid" placeholder="Author ID">
+            </div>
+            <div class="margin-05">
+                <button [disabled]="formLogin.invalid"> {{getTitle()}} </button>
+            </div>
+            <div class="margin-05">
+                <a href="#" (click)="handleSignUp()"> {{getLabelLink()}}  </a>
+            </div>
+        </form>
+    </div>
+</div>

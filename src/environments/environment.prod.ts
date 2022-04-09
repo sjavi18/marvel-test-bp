@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: ''
+  url: 'https://mysql-bp-login.herokuapp.com',
 };

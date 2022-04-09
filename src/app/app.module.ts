@@ -9,7 +9,7 @@ import { HttpModule } from '@pichincha/angular-sdk/http';
 
 const assets: Array<ExternalAssetsConfig> = [{
   type: 'stylesheet',
-  url: '/assets/bootstrap.css'
+  url: ''
 }]
 
 
