@@ -1,4 +1,4 @@
-<form class="card-form flex-center columns" [formGroup]="characterForm" (ngSubmit)="processForm()" novalidate>
+<form class="card-form flex-center columns" [formGroup]="characterForm" (ngSubmit)="dataToSave.emit(this.characterForm.value)" novalidate>
     <h1>{{title}}</h1>
     <div class="card-form__input">
         <div>

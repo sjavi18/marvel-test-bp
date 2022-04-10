@@ -8,15 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeGuard implements CanActivate {
   
-  constructor (private _cookieService: CookieService, private _router: Router) {
-
-  }
-
-  redirect(flag: boolean) {
-    if(!flag) {
-      this._router.navigate(['/', 'login'])
-    }
-  }
+  constructor (private _cookieService: CookieService, private _router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,

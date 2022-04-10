@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from '../../services/login/login.service';
 import { IUser } from '../../models/user.model';
 
 @Component({

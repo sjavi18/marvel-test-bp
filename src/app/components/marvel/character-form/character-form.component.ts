@@ -10,7 +10,6 @@ import { ICharacter } from '../../../models/character.model';
 export class CharacterFormComponent implements OnInit {
 
   @Input() characterToEdit!: ICharacter
-  @Input() show: boolean = false
   @Input() hasEditCharacter: boolean = false
   @Output() handleCancel = new EventEmitter<string>()
   @Output() dataToSave = new EventEmitter<ICharacter>()
@@ -22,13 +21,7 @@ export class CharacterFormComponent implements OnInit {
   constructor(private readonly _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-
     this.formCharacter();
-
-  }
-
-  getTitle() {
-    return 'Nuevo Personaje'
   }
 
   private formCharacter(): void {
@@ -46,10 +39,6 @@ export class CharacterFormComponent implements OnInit {
     this.characterForm.controls['body'].setValue(this.characterToEdit.body);
     this.characterForm.controls['image'].setValue(this.characterToEdit.image);
     window.scrollTo(0, 0);
-  }
-
-  processForm() {
-    this.dataToSave.emit(this.characterForm.value)
   }
 
   cancel() {

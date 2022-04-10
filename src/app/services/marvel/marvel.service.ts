@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICharacter } from '../models/character.model';
-
-import { environment } from '../../environments/environment.prod';
+import { ICharacter } from '../../models/character.model';
+import { environment } from '../../../environments/environment.prod';
 import { CookieService } from 'ngx-cookie-service';
 
 const url: string = environment.url_marvel;

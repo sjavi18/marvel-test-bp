@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { MarvelService } from 'src/app/services/marvel.service';
+import { MarvelService } from 'src/app/services/marvel/marvel.service';
 import { ICharacter } from '../../models/character.model';
 
 @Component({

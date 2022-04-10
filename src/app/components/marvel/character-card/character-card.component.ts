@@ -6,22 +6,10 @@ import { ICharacter } from 'src/app/models/character.model';
   templateUrl: './character-card.component.html',
   styleUrls: ['./character-card.component.scss']
 })
-export class CharacterCardComponent implements OnInit {
+export class CharacterCardComponent{
 
   @Input() characters: ICharacter[] = []
   @Output() edit = new EventEmitter<ICharacter>()
   @Output() delete = new EventEmitter<ICharacter>()
-  constructor() { }
 
-  ngOnInit(): void {
-
-  }
-
-  editCharacter(character: ICharacter) {
-    this.edit.emit(character)
-  }
-
-  deleteCharacter(character: ICharacter) {
-    this.delete.emit(character)
-  }
 }

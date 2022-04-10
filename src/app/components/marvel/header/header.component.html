@@ -2,11 +2,11 @@
     <div class="flex-start input-icons">
         <h1>Listado de personajes</h1>
         <i class="material-icons icon">search</i>
-        <input #in (keyup)="search(in.value)" (change)="search(in.value)" type="text" class="input"
+        <input #in (keyup)="searchCharacter.emit(in.value)" (change)="searchCharacter.emit(in.value)" type="text" class="input"
             placeholder="Buscar">
     </div>
     <div class="header-buttons">
-        <button (click)="logout()"><span class="material-icons">logout</span>Cerrar sesión</button>
-        <button (click)="new()"><span class="material-icons">add</span>Nuevo</button>
+        <button (click)="logoutEvent.emit(true)"><span class="material-icons">logout</span>Cerrar sesión</button>
+        <button (click)="newEvent.emit(true)"><span class="material-icons">add</span>Nuevo</button>
     </div>
 </div>

@@ -14,8 +14,8 @@
             </span>
         </div>
         <div class="container-character__btns">
-            <button (click)="editCharacter(character)"><span class="material-icons">edit</span></button>
-            <button (click)="deleteCharacter(character)"><span class="material-icons">delete</span></button>
+            <button (click)="edit.emit(character)"><span class="material-icons">edit</span></button>
+            <button (click)="delete.emit(character)"><span class="material-icons">delete</span></button>
         </div>
     </div>
 </div>
