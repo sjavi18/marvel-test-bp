@@ -1,1 +1,22 @@
-<p>character-FORM works!</p>
+<form class="card-form flex-center columns" [formGroup]="characterForm" (ngSubmit)="processForm()" novalidate>
+    <h1>{{title}}</h1>
+    <div class="card-form__input">
+        <div>
+            <label for="">Nombre:</label>
+            <input type="text" formControlName="title" placeholder="Nombre">
+        </div>
+        <div>
+            <label for="">Descripción:</label>
+            <textarea formControlName="body" placeholder="Descripción"></textarea>
+        </div>
+        <div>
+            <label for="">Imagen:</label>
+            <input type="text" formControlName="image" placeholder="URL">
+        </div>
+    </div>
+
+    <div class="card-form__button">
+        <button type="submit" [disabled]="characterForm.invalid"><span class="material-icons icon">save</span><span class="card-form__button__separator-icon">Guardar</span></button>
+        <button (click)="cancel()" type="button" class="card-form__button__separator" ><span class="material-icons icon">cancel</span><span class="card-form__button__separator-icon">Cancelar</span></button>
+    </div>
+</form>

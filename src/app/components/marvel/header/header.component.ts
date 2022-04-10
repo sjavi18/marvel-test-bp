@@ -10,6 +10,8 @@ export class HeaderComponent implements OnInit {
   public searchValue: string = ''
 
   @Output() searchCharacter = new EventEmitter<string>()
+  @Output() logoutEvent= new EventEmitter<boolean>()
+  @Output() newEvent = new EventEmitter<boolean>()
 
   constructor() { }
 
@@ -20,6 +22,11 @@ export class HeaderComponent implements OnInit {
    this.searchCharacter.emit(data)
   }
 
-  
+  logout() {
+    this.logoutEvent.emit(true)
+  }
 
+  new() {
+    this.newEvent.emit(true)
+  }
 }
