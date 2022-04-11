@@ -47,7 +47,7 @@ describe('BaseComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should call doAThing when value is returned', () => {
+  it('should create', () => {
 
     marvelService.getAllCharacters().subscribe(data => {
       expect(data).toBe(0);

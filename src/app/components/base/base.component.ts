@@ -4,6 +4,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { MarvelService } from '../../services/marvel/marvel.service';
 import { ICharacter } from '../../models/character.model';
 
+import { catchError } from 'rxjs/operators'
+import { throwError } from 'rxjs';
+
 @Component({
   selector: 'app-base',
   templateUrl: './base.component.html',
@@ -28,7 +31,14 @@ export class BaseComponent implements OnInit {
    * get all marvel characters according to author
    */
   getAllCharacters() {
-    this._marvelService.getAllCharacters().subscribe(
+    this._marvelService.getAllCharacters()
+    .pipe(
+      catchError(error => {
+        console.log('LOCAL_ERROR', error)
+        return throwError(error)
+      })
+    )
+    .subscribe(
       data => {
         this.charactersMarvel = data;
       },
@@ -43,7 +53,14 @@ export class BaseComponent implements OnInit {
    * @param key 
    */
   searchCharacter(key: string) {
-    this._marvelService.searchCharacter(key).subscribe(
+    this._marvelService.searchCharacter(key)
+    .pipe(
+      catchError(error => {
+        console.log('LOCAL_ERROR', error)
+        return throwError(error)
+      })
+    )
+    .subscribe(
       data => {
         this.charactersMarvel = data;
       },
@@ -58,7 +75,14 @@ export class BaseComponent implements OnInit {
    * @param character 
    */
   deleteCharacter(character: ICharacter) {
-    this._marvelService.deleteCharacter(character._id).subscribe(
+    this._marvelService.deleteCharacter(character._id)
+    .pipe(
+      catchError(error => {
+        console.log('LOCAL_ERROR', error)
+        return throwError(error)
+      })
+    )
+    .subscribe(
       response => {
         this.getAllCharacters();
         alert(response.message);
@@ -95,7 +119,14 @@ export class BaseComponent implements OnInit {
    */
   processAction(character: ICharacter) {
     if (this.hasEditCharacter) {
-      this._marvelService.editCharacter(character, this.characterToEdit._id).subscribe(
+      this._marvelService.editCharacter(character, this.characterToEdit._id)
+      .pipe(
+        catchError(error => {
+          console.log('LOCAL_ERROR', error)
+          return throwError(error)
+        })
+      )
+      .subscribe(
         response => {
           this.getAllCharacters();
           this.showFormCharacter = false;

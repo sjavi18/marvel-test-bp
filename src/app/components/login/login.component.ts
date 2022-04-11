@@ -5,6 +5,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from '../../services/login/login.service';
 import { IUser } from '../../models/user.model';
 
+import { catchError } from 'rxjs/operators'
+import { throwError } from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -72,7 +75,14 @@ export class LoginComponent implements OnInit {
   send() {
     let loginForm: IUser = this.formLogin.value
     if (!this.hasSignUp) {
-      this._loginService.login(loginForm).subscribe(
+      this._loginService.login(loginForm)
+      .pipe(
+        catchError(error => {
+          console.log('LOCAL_ERROR', error)
+          return throwError(error)
+        })
+      )
+      .subscribe(
         response => {
           if (response.success) {
             this._cookieService.set('token', response.data.jwt)
@@ -89,7 +99,14 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.hasSignUp) {
-      this._loginService.signup(loginForm).subscribe(
+      this._loginService.signup(loginForm)
+      .pipe(
+        catchError(error => {
+          console.log('LOCAL_ERROR', error)
+          return throwError(error)
+        })
+      )
+      .subscribe(
         response => {
           response.message && alert(response.message)
           if (response.success) {
