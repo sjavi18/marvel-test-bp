@@ -24,7 +24,10 @@ export class CharacterFormComponent implements OnInit {
     this.formCharacter();
   }
 
-  private formCharacter(): void {
+  /**
+   * Create the form and if it is a character edition, assign its data
+   */
+  formCharacter(): void {
     this.characterForm = this._formBuilder.group({
       title: ['', [Validators.required]],
       body: ['', [Validators.required]],
@@ -33,6 +36,9 @@ export class CharacterFormComponent implements OnInit {
     this.hasEditCharacter && this.setData()
   }
 
+  /**
+   * assignment of character data in case of editing
+   */
   setData() {
     this.title = 'Editar Personaje';
     this.characterForm.controls['title'].setValue(this.characterToEdit.title);
@@ -41,6 +47,9 @@ export class CharacterFormComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  /**
+   * reset the form and emit the cancel event to hide the form
+   */
   cancel() {
     this.characterForm.reset();
     this.handleCancel.emit('c')

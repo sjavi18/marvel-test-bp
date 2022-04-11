@@ -24,15 +24,26 @@ export class LoginComponent implements OnInit {
     this.getForm()
   }
 
+  /**
+   * It depends on how the form is viewed, it shows the title for it
+   * @returns 
+   */
   getTitle() {
     return this.hasSignUp ? "Crear cuenta" : "Iniciar sesión"
   }
 
+  /**
+   * It depends on how the form is viewed, it shows the title for the user creation or login link
+   * @returns 
+   */
   getLabelLink() {
     return this.hasSignUp ? "Iniciar sesión" : "Crear cuenta"
 
   }
 
+  /**
+   * in case it is user creation, create a required validator for the author field
+   */
   handleSignUp() {
     this.getForm()
     this.formLogin.controls["authorid"].clearValidators();
@@ -42,6 +53,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * create the form group for login / signup
+   */
   getForm() {
     this.formLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -50,8 +64,12 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  /**
+   * If it is login, and the response from the service was correct, navigate to the home screen, if it is signup, 
+   * register the new user and redirect to login
+   * @returns 
+   */
   send() {
-    console.log(this.formLogin?.value)
     let loginForm: IUser = this.formLogin.value
     if (!this.hasSignUp) {
       this._loginService.login(loginForm).subscribe((data) => {

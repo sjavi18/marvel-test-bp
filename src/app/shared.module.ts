@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ExternalAssetsModule } from '@pichincha/angular-sdk/external-assets';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 /**
  * Components
  */
@@ -13,7 +14,6 @@ import { CharacterCardComponent } from './components/marvel/character-card/chara
 import { CharacterFormComponent } from './components/marvel/character-form/character-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
