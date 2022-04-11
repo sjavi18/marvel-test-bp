@@ -17,8 +17,8 @@ export class BaseComponent implements OnInit {
   public hasEditCharacter: boolean = false;
 
   constructor(private readonly _marvelService: MarvelService,
-              private readonly _router: Router,
-              private readonly _cookieService: CookieService) { }
+    private readonly _router: Router,
+    private readonly _cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.getAllCharacters()
@@ -28,9 +28,14 @@ export class BaseComponent implements OnInit {
    * get all marvel characters according to author
    */
   getAllCharacters() {
-    this._marvelService.getAllCharacters().subscribe((data) => {
-      this.charactersMarvel = data;
-    })
+    this._marvelService.getAllCharacters().subscribe(
+      data => {
+        this.charactersMarvel = data;
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
   /**
@@ -38,9 +43,14 @@ export class BaseComponent implements OnInit {
    * @param key 
    */
   searchCharacter(key: string) {
-    this._marvelService.searchCharacter(key).subscribe((data) => {
-      this.charactersMarvel = data;
-    })
+    this._marvelService.searchCharacter(key).subscribe(
+      data => {
+        this.charactersMarvel = data;
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
   /**
@@ -48,10 +58,15 @@ export class BaseComponent implements OnInit {
    * @param character 
    */
   deleteCharacter(character: ICharacter) {
-    this._marvelService.deleteCharacter(character._id).subscribe((response) => {
-      this.getAllCharacters();
-      alert(response.message);
-    })
+    this._marvelService.deleteCharacter(character._id).subscribe(
+      response => {
+        this.getAllCharacters();
+        alert(response.message);
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
   /**
@@ -80,21 +95,31 @@ export class BaseComponent implements OnInit {
    */
   processAction(character: ICharacter) {
     if (this.hasEditCharacter) {
-      this._marvelService.editCharacter(character, this.characterToEdit._id).subscribe(response => {
+      this._marvelService.editCharacter(character, this.characterToEdit._id).subscribe(
+        response => {
+          this.getAllCharacters();
+          this.showFormCharacter = false;
+          this.hasEditCharacter = false;
+          alert(response.message);
+        },
+        error => {
+          console.error(error)
+        }
+      )
+      return
+    }
+    character.category = 'main'
+    this._marvelService.createCharacter(character).subscribe(
+      response => {
         this.getAllCharacters();
         this.showFormCharacter = false;
         this.hasEditCharacter = false;
         alert(response.message);
-      })
-      return
-    }
-    character.category = 'main'
-    this._marvelService.createCharacter(character).subscribe(response => {
-      this.getAllCharacters();
-      this.showFormCharacter = false;
-      this.hasEditCharacter = false;
-      alert(response.message);
-    })
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
   /**

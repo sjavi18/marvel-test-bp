@@ -72,29 +72,35 @@ export class LoginComponent implements OnInit {
   send() {
     let loginForm: IUser = this.formLogin.value
     if (!this.hasSignUp) {
-      this._loginService.login(loginForm).subscribe((data) => {
-        
-        if (data.success) {
-          this._cookieService.set('token', data.data.jwt)
-          this._cookieService.set('author_id', data.data.authorid)
-          alert("Bienvenido")
-          this._router.navigate(["/home"]);
+      this._loginService.login(loginForm).subscribe(
+        response => {
+          if (response.success) {
+            this._cookieService.set('token', response.data.jwt)
+            this._cookieService.set('author_id', response.data.authorid)
+            alert("Bienvenido")
+            this._router.navigate(["/home"]);
+          }
+          response.message && alert(response.message)
+        },
+        error => {
+          console.log(error)
         }
-        data.message && alert(data.message)
-      });
-      return
+      );
     }
 
     if (this.hasSignUp) {
-      this._loginService.signup(loginForm).subscribe((data) => {
-        data.message && alert(data.message)
-        if (data.success) {
-          this.handleSignUp()
+      this._loginService.signup(loginForm).subscribe(
+        response => {
+          response.message && alert(response.message)
+          if (response.success) {
+            this.handleSignUp()
+          }
+        },
+        error => {
+          console.log(error)
         }
-      });
-      return
+      );
     }
-
   }
 
 }
